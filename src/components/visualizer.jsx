@@ -24,6 +24,7 @@ import {
    CURRENT,
    NORMAL,
    DONE,
+   LISTARR,
 } from "../helper/constants";
 import { getKeysCopy } from "../helper/keys.js";
 
@@ -75,6 +76,14 @@ class Visualizer extends React.Component {
       } else if (option === SIZE && !this.state.running) {
          this.setState({ size: Number(value) });
          this.generateList();
+      } else if (option === LISTARR && !this.state.running){
+         let val = value.split(',');
+         let arr1 = []
+         for (let i of val) {
+            arr1.push({key: parseInt(i), classType: 0})
+         }
+         this.setState({ list: arr1 })
+         this.setState({ size: Number(val.length) });
       }
    };
 

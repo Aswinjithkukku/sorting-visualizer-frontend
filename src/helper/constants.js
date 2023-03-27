@@ -7,6 +7,7 @@ export const HIGHLIGHT = 3;
 export const ALGORITHM = "algo";
 export const SPEED = "speed";
 export const SIZE = "size";
+export const LISTARR = "listarr";
 
 // for updating the classes
 export const CURRENT = 1;

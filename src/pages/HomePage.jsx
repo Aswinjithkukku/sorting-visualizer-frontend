@@ -3,6 +3,7 @@ import Visualizer from "../components/visualizer";
 import { FaQuoteLeft, FaQuoteRight, FaStudiovinari } from "react-icons/fa";
 import axios from "../axios";
 import { Link } from "react-router-dom";
+import HeroImage from '../images/HeroImage.png';
 
 function HomePage() {
    const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +33,7 @@ function HomePage() {
             <div className="first__section h-[60vh] w-full">
                <img
                   className="object-contain w-full h-full"
-                  src="/images/HeroImage.png"
+                  src={HeroImage}
                   alt="Hero"
                />
             </div>
