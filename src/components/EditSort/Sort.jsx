@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import RichTextEditor from "../RichTextEditor";
 import axios from "../../axios";
 import Swal from "sweetalert2";
+import BtnLoader from "../BtnLoader";
 
 function Sort() {
   const navigate = useNavigate();
@@ -58,12 +59,12 @@ function Sort() {
       e.preventDefault();
       setError("");
       setIsLoading(true);
-      const response = await axios.post("/admin/creatsort", data);
+      const response = await axios.post(`/admin/sort/${params.id}/edit`, data);
       console.log(response);
       setIsLoading(false);
       Swal.fire({
         title: "Success!",
-        text: "The sort added successfully",
+        text: "The sort edited successfully",
         icon: "success",
         confirmButtonText: "Cool",
       });
@@ -72,7 +73,7 @@ function Sort() {
       setIsLoading(false);
       Swal.fire({
         title: "Error!",
-        text: "The sort didnt added as expected",
+        text: "The sort didnt edited as expected",
         icon: "error",
         confirmButtonText: "Cool",
       });
@@ -191,7 +192,7 @@ function Sort() {
               type="submit"
               className="px-6 py-3 hover:bg-gray-700 hover:text-gray-400 bg-gray-800 rounded shadow text-gray-300"
             >
-              Create
+              {isLoading ? <BtnLoader /> : "Edit"} 
             </button>
           </div>
         </form>

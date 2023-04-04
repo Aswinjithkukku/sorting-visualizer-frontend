@@ -15,8 +15,7 @@ function SortListPage() {
       try {
          setLoading(true);
          const response = await axios.get("/admin/getsort");
-         console.log(response?.data);
-         setData(response?.data);
+         setData(response?.data?.sortData);
          setLoading(false);
       } catch (err) {
          console.log(err?.response?.data?.error);
@@ -26,6 +25,19 @@ function SortListPage() {
    useEffect(() => {
       fetchData();
    }, []);
+
+   const deleteSort = async (id) => {
+      try {
+        const response = await axios.delete(`/admin/sort/${id}/delete`);
+  
+        const filteredData = data?.filter((item) => {
+          return id !== item?._id;
+        });
+        setData(filteredData);
+      } catch (err) {
+        console.log(err?.response?.data?.error);
+      }
+    };
    return (
       <div className="min-h-screen bg-gray-500">
          <div className="max-w-screen-xl mx-auto">
@@ -60,7 +72,7 @@ function SortListPage() {
                            </tr>
                         </thead>
                         <tbody className="text-gray-300 ">
-                           {data?.sortData?.map((item, index) => (
+                           {data?.map((item, index) => (
                               <tr className="border-t" key={item?.id}>
                                  <td className="p-3">{index + 1}</td>
                                  <td className="p-3">{item?.title}</td>
@@ -72,7 +84,9 @@ function SortListPage() {
                                        <Link to={`/dashboard/sort/${item?._id}/edit`} className="text-green-400">
                                           <AiFillEdit />
                                        </Link>
-                                       <span className="text-red-400">
+                                       <span
+                                       onClick={() => deleteSort(item?._id)}
+                                       className="text-red-400">
                                           <AiFillDelete />
                                        </span>
                                     </p>

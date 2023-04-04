@@ -31,6 +31,8 @@ function BaseAlgorithm() {
          setData([response?.data, ...data]);
          console.log(data);
          setIsBtnLoading(false);
+         setLanguage("")
+         setCode("")
          Swal.fire({
             title: "Success!",
             text: "The base language added successfully",

@@ -17,7 +17,7 @@ function Working() {
    const [isLoading, setIsLoading] = useState(false);
    const [subHeading, setSubHeading] = useState("");
    const [text, setText] = useState("");
-   const [section, sestSection] = useState(0);
+   const [section, setSection] = useState(0);
 
    const { image, handleImageChange, error: imageError } = useImageChange();
 
@@ -36,8 +36,11 @@ function Working() {
 
          const response = await axios.post("/admin/addworking", formData);
          console.log(response);
-         setData([response?.data?.newWorking, ...data]);
+         setData([ ...data,response?.data?.newWorking]);
          setIsLoading(false);
+         setSubHeading("")
+         setText("")
+         setSection(0)
          Swal.fire({
             title: "Success!",
             text: "The sort added successfully",
@@ -143,7 +146,7 @@ function Working() {
                            type="number"
                            name="section"
                            value={section}
-                           onChange={(e) => sestSection(e.target.value)}
+                           onChange={(e) => setSection(e.target.value)}
                            className="w-full py-2 rounded outline-none  bg-gray-400 text-white px-2"
                         />
                      </div>
