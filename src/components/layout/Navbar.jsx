@@ -24,29 +24,7 @@ function Navbar() {
                   <p className="uppercase font-[800] text-2xl">SortMate</p>
                </Link>
             </div>
-            <div className="text-[14px] font-medium capitalize flex gap-3 h-full ">
-               <button className="hover:border-b-2 hover:text-white border-blue-600 h-full flex items-center">
-                  Bubble Sort
-               </button>
-               <button className="hover:border-b-2 hover:text-white border-blue-600 h-full flex items-center">
-                  Selection Sort
-               </button>
-               <button className="hover:border-b-2 hover:text-white border-blue-600 h-full flex items-center">
-                  Insertion Sort
-               </button>
-               <button className="hover:border-b-2 hover:text-white border-blue-600 h-full flex items-center">
-                  Merge Sort
-               </button>
-               <button className="hover:border-b-2 hover:text-white border-blue-600 h-full flex items-center">
-                  Quick Sort
-               </button>
-               <button className="hover:border-b-2 hover:text-white border-blue-600 h-full flex items-center">
-                  Heap Sort
-               </button>
-               <button className="hover:border-b-2 hover:text-white border-blue-600 h-full flex items-center">
-                  Twist Sort
-               </button>
-            </div>
+
             <div ref={profileRef} className="relative">
                <div className="h-9 w-9" onClick={() => setViewProfile(true)}>
                   <img

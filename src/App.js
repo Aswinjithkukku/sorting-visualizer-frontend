@@ -15,5 +15,5 @@ export default function App() {
     },[dispatch])
 
     const routing = useRoutes(ThemeRoutes);
-    return isLoading ? "isLoading..." : routing
+    return isLoading ? <p>is Loading....</p> : routing
 }
