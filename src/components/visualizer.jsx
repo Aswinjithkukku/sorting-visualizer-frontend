@@ -84,6 +84,10 @@ class Visualizer extends React.Component {
          }
          this.setState({ list: arr1 })
          this.setState({ size: Number(val.length) });
+         if(Number(value) === 0) {
+            this.setState({ size: 10 })
+            this.generateList(1)
+         }
       }
    };
 

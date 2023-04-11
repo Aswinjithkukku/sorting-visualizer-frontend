@@ -59,7 +59,8 @@ class Navbar extends React.Component {
                     <input
                         placeholder='Insert manual list of numbers ex: 1,10,20,30'
                         pattern='^[0-9]+(,[0-9]+)*$'
-                        className='w-full outline-none focus:border py-3 placeholder:text-gray-300 px-2 text-gray-200 bg-gray-600 rounded border-green-500' type="text" onChange={(e) => {
+                        className='w-full outline-none focus:border py-3 placeholder:text-gray-300 px-2 text-gray-200 bg-gray-600 rounded border-green-500' 
+                        type="text" onChange={(e) => {
                             this.props.onChange(e.target.value, "listarr")
                         }} /></div>
             </div>
