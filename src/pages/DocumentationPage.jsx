@@ -68,7 +68,7 @@ function DocumentationPage() {
           ></p>
         </div>
         <div className="text-3xl font-[600] text-gray-300 text-center py-7 border-t border-gray-400">
-          Working of Bubble Sort
+          Working of {sortData?.title}
         </div>
         <div className="space-y-2">
           {working?.map((item) => (
@@ -111,7 +111,11 @@ function DocumentationPage() {
                   onClick={() => {
                     handleAlgo(item?._id);
                   }}
-                  className={`w-full border-b cursor-pointer  ${item?._id === selectedAlgorithmData?._id  ? " border-blue-400 " : "" } `}
+                  className={`w-full border-b cursor-pointer  ${
+                    item?._id === selectedAlgorithmData?._id
+                      ? " border-blue-400 "
+                      : ""
+                  } `}
                   key={item?._id}
                 >
                   <p className="text-white  ">{item?.language}</p>
@@ -126,30 +130,36 @@ function DocumentationPage() {
             ></p>
           </div>
           {/* //////// Optimised algo /////// */}
-          <div className="pt-5 ">
-            <h3 className="font-[700] text-2xl text-gray-200 pb-3">
-              Optimised {sortData?.title} Algorithm
-            </h3>
-            <div className="flex gap-2">
-              {optAlgorithm?.map((item) => (
-                <div
-                  onClick={() => {
-                    handleOptAlgo(item?._id);
-                  }}
-                  className={`w-full border-b cursor-pointer  ${item?._id === optSelectedAlgorithmData?._id  ? " border-blue-400 " : "" } `}
-                  key={item?._id}
-                >
-                  <p className="text-white  ">{item?.language}</p>
-                </div>
-              ))}
+          {optAlgorithm?.length > 0 && (
+            <div className="pt-5 ">
+              <h3 className="font-[700] text-2xl text-gray-200 pb-3">
+                Optimised {sortData?.title} Algorithm
+              </h3>
+              <div className="flex gap-2">
+                {optAlgorithm?.map((item) => (
+                  <div
+                    onClick={() => {
+                      handleOptAlgo(item?._id);
+                    }}
+                    className={`w-full border-b cursor-pointer  ${
+                      item?._id === optSelectedAlgorithmData?._id
+                        ? " border-blue-400 "
+                        : ""
+                    } `}
+                    key={item?._id}
+                  >
+                    <p className="text-white  ">{item?.language}</p>
+                  </div>
+                ))}
+              </div>
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: optSelectedAlgorithmData?.code,
+                }}
+                className=" p-7 bg-gray-900 text-gray-300 rounded-xl"
+              ></p>
             </div>
-            <p
-              dangerouslySetInnerHTML={{
-                __html: optSelectedAlgorithmData?.code,
-              }}
-              className=" p-7 bg-gray-900 text-gray-300 rounded-xl"
-            ></p>
-          </div>
+          )}
           {/* ///////// table //////// */}
           <div className="pt-5 ">
             <h3 className="font-[700] text-2xl text-gray-200 pb-3">
